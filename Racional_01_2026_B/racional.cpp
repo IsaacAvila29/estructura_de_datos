@@ -27,7 +27,7 @@ Racional::Racional()
     den = 1;
 }
 
- inline bool Racional::set(int Num,int Den)
+bool Racional::set(int Num,int Den)
 {
     if (Den == 0) return false;
     num = Num;
@@ -43,7 +43,7 @@ static void normalize(Racional &r)
     if (g > 1) { r.num /= g; r.den /= g; }
 }
 
- inline Racional Racional::Sumar(Racional R2)
+Racional Racional::Sumar(Racional R2)
 {
     Racional Result;
     if (den == R2.den) {
@@ -57,7 +57,7 @@ static void normalize(Racional &r)
     return Result;
 }
 
- inline Racional Racional::Restar(Racional R2)
+Racional Racional::Restar(Racional R2)
 {
     Racional Result;
     if (den == R2.den) {
@@ -71,7 +71,7 @@ static void normalize(Racional &r)
     return Result;
 }
 
- inline Racional Racional::Multiplicar(Racional R2)
+Racional Racional::Multiplicar(Racional R2)
 {
     Racional Result;
     Result.num = num * R2.num;
@@ -80,7 +80,7 @@ static void normalize(Racional &r)
     return Result;
 }
 
- inline Racional Racional::Dividir(Racional R2)
+Racional Racional::Dividir(Racional R2)
 {
     Racional Result;
     if (R2.num == 0) {
@@ -93,12 +93,11 @@ static void normalize(Racional &r)
     return Result;
 }
 
- inline void Racional::imprimir()
+void Racional::imprimir()
 {
     cout << num << "/" << den << '\n';
 }
- inline int Racional::Decimal()
+int Racional::Decimal()
 {
-        return float(num) / float(den);
+    return float(num) / float(den);
 }
-// ...existing code...
