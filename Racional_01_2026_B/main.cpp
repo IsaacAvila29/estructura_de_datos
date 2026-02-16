@@ -1,5 +1,6 @@
 // Practica 01 - Racional
 // Isaac Avila Saenz 238925
+//Héctor Alejandro Hernández Villanueva 248895
 // Este programa implementa una clase Racional para realizar operaciones con números racionales.
 #include <iostream>
 #include "racional.h"
