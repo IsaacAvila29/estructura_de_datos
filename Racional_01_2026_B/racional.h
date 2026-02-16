@@ -1,18 +1,19 @@
 #ifndef RACIONAL_H
 #define RACIONAL_H
 
-class Racional {
-public:
-    int num;
-    int den;
-    Racional();
-    bool set(int Num, int Den);
-    Racional Sumar(Racional R2);
-    Racional Restar(Racional R2);
-    Racional Multiplicar(Racional R2);
-    Racional Dividir(Racional R2);
-    void imprimir();
-    int Decimal();
+
+class Racional
+{
+    public:
+        Racional();
+        void set(int,int);
+        Racional Sumar(Racional r);
+        Racional Restar(Racional r);
+        Racional Multiplicar(Racional r);
+        Racional Dividir(Racional r);
+        void imprimir();
+    private:
+       int num, den;
 };
 
 #endif // RACIONAL_H

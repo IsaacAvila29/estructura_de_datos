@@ -1,9 +1,5 @@
-// ...existing code...
 #include "racional.h"
 
-// Some standard library implementations (on older toolchains) may
-// not provide std::gcd even with C++17. Provide a small local gcd
-// implementation to be portable.
 
 static int gcd_int(int a, int b)
 {
@@ -21,27 +17,22 @@ static int gcd_int(int a, int b)
 #include <iostream>
 using namespace std;
 
+// Inline parece no funcionar para el compilador de MacOs
+
+
 Racional::Racional()
 {
     num = 0;
     den = 1;
 }
 
-bool Racional::set(int Num,int Den)
+void Racional::set(int Num,int Den)
 {
-    if (Den == 0) return false;
+    if (Den == 0) return;
     num = Num;
     den = Den;
-    return true;
 }
 
-static void normalize(Racional &r)
-{
-    if (r.den == 0) return;
-    if (r.den < 0) { r.num = -r.num; r.den = -r.den; }
-    int g = gcd_int(r.num, r.den);
-    if (g > 1) { r.num /= g; r.den /= g; }
-}
 
 Racional Racional::Sumar(Racional R2)
 {
@@ -53,7 +44,6 @@ Racional Racional::Sumar(Racional R2)
         Result.num = num * R2.den + den * R2.num;
         Result.den = den * R2.den;
     }
-    normalize(Result);
     return Result;
 }
 
@@ -67,7 +57,6 @@ Racional Racional::Restar(Racional R2)
         Result.num = num * R2.den - den * R2.num;
         Result.den = den * R2.den;
     }
-    normalize(Result);
     return Result;
 }
 
@@ -76,7 +65,6 @@ Racional Racional::Multiplicar(Racional R2)
     Racional Result;
     Result.num = num * R2.num;
     Result.den = den * R2.den;
-    normalize(Result);
     return Result;
 }
 
@@ -89,15 +77,10 @@ Racional Racional::Dividir(Racional R2)
     }
     Result.num = num * R2.den;
     Result.den = den * R2.num;
-    normalize(Result);
     return Result;
 }
 
 void Racional::imprimir()
 {
     cout << num << "/" << den << '\n';
-}
-int Racional::Decimal()
-{
-    return float(num) / float(den);
 }
