@@ -7,15 +7,17 @@ typedef int typeinfo;
 class Conjunto
 {
     private:
-      int elementos[maxCard];
-      int card;
+      typeinfo elementos[maxCard];
+      unsigned short int card; // Para ahorrar memoria:)
     public:
+        //Este es el constructor
         Conjunto();
-        bool Member(typeinfo); //
-        bool AddElem(typeinfo); //
-        void RmvElem(typeinfo);
+
+        bool Member(typeinfo); //Recordando que typeinfo es un int, entonces el parametro de esta funcion es un int
+        bool AddElem(typeinfo); //Como precondicion, que no este lleno, ni que el elemento este repetido
+        bool RmvElem(typeinfo);
         void Copy(Conjunto&); //
-        bool Equal(Conjunto);
+        bool Equal(Conjunto);//Comparamos que dos conjuntos sean iguales.
         bool Print(); //
         void Intersect(Conjunto, Conjunto&);
         bool Union(Conjunto, Conjunto&);
