@@ -13,14 +13,15 @@ class Conjunto
         //Este es el constructor
         Conjunto();
 
-        bool Member(typeinfo); //Recordando que typeinfo es un int, entonces el parametro de esta funcion es un int
+        bool Member(typeinfo) const; //Recordando que typeinfo es un int, entonces el parametro de esta funcion es un int
         bool AddElem(typeinfo); //Como precondicion, que no este lleno, ni que el elemento este repetido
         bool RmvElem(typeinfo);
         void Copy(Conjunto&); //
         bool Equal(Conjunto);//Comparamos que dos conjuntos sean iguales.
         bool Print(); //
-        void Intersect(Conjunto, Conjunto&);
+        void Intersect(const Conjunto, Conjunto&);
         bool Union(Conjunto, Conjunto&);
+        
         //void RmvAll();
         virtual ~Conjunto();
 
