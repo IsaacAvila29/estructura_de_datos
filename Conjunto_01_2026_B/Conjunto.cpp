@@ -41,11 +41,16 @@ void Conjunto::Copy(Conjunto& otro)
 }
 
 
-bool Conjunto::Print()
-{
-    for(int i=0; i<card; i++)
-        std::cout << elementos[i] << " ";
-    std::cout << std::endl;
+inline bool Conjunto::Print(){
+    if(!card){
+        std::cout << "{ }" << std::endl;
+        return false;
+    }
+    std::cout << "{ ";
+    for(int i=0; i<card-1; i++){
+        std::cout << elementos[i] << ", ";
+    }
+    std::cout << elementos[card-1] << " }" << std::endl;
     return true;
 }
 

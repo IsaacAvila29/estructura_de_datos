@@ -5,43 +5,49 @@ using namespace std;
 //Ejecutar el programa
 //g++ "Conjunto_01_2026_B/main.cpp" -o "Conjunto_01_2026_B/main"
 int main() {
-    Conjunto A, B, Resultado;
-    int n, elem;
+    Conjunto C1, C2, Result;
+    typedef int dato;
+    dato dato_val;
 
-    cout << "¿Cuántos elementos tiene el conjunto A? (max " << maxCard << "): ";
-    cin >> n;
-    cout << "Ingresa los elementos de A:" << endl;
-    for (int i = 0; i < n; i++) {
-        cout << "  A[" << i << "]: ";
-        cin >> elem;
-        if (!A.AddElem(elem))
-            cout << "  (elemento repetido o conjunto lleno, ignorado)" << endl;
+    for(int i=0; i<5; i++){
+        std::cout << "Teclee elemento: ";
+        std::cin >> dato_val;
+
+        if(C1.AddElem(dato_val))
+            std::cout << dato_val << " Insertado!\n";
+        else
+            std::cout << " Error! ya existe o no cabe" << endl;
     }
 
-    cout << "¿Cuántos elementos tiene el conjunto B? (max " << maxCard << "): ";
-    cin >> n;
-    cout << "Ingresa los elementos de B:" << endl;
-    for (int i = 0; i < n; i++) {
-        cout << "  B[" << i << "]: ";
-        cin >> elem;
-        if (!B.AddElem(elem))
-            cout << "  (elemento repetido o conjunto lleno, ignorado)" << endl;
+    if(!(C1.Print()))
+        std::cout << "Conjunto vacío!\n";
+
+    if(!(C1.Print()))
+    std::cout << "Conjunto vacío!\n";
+    C1.Copy(C2);
+    cout << "Imoruimiento del segundo conjunto: " << endl;
+    if(!(C1.Print()))
+    std::cout << "Conjunto vacío!\n";
+    if(!(C2.Print()))
+    std::cout << "Conjunto vacío!\n\n";
+
+    for(int i=0;i<2;i++){
+        std::cout << "Teclee dato a remover: ";
+        std::cin >> dato_val;
+        if(C1.RmvElem(dato_val)){
+            std::cout << "eliminado: " <<dato_val <<endl;
+            if(!(C1.Print()))
+                std::cout << "Conjunto vacio!\n";
+        }
+        else
+            std::cout << "Error, dato no existe!\n";
     }
 
-    cout << "\nConjunto A: ";
-    A.Print();
-
-    cout << "Conjunto B: ";
-    B.Print();
-
-    A.Intersect(B, Resultado);
-    cout << "Interseccion A ∩ B: ";
-    Resultado.Print();
-
-    // Unión A ∪ B
-    A.Union(B, Resultado);
-    cout << "Union A ∪ B: ";
-    Resultado.Print();
+    C1.Intersect(C2, Result);
+    cout << "Intersección de C1 y C2: " << endl;    
+    if(!(Result.Print()))
+        std::cout << "No se encontró intersección!\n";
 
     return 0;
 }
+
