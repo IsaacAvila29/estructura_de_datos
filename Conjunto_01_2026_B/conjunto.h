@@ -1,3 +1,6 @@
+//Practica Conjunto
+// Isaac Avila Saenz 238925
+// Héctor Alejandro Hernández Villanueva 248895
 #ifndef CONJUNTO_H
 #define CONJUNTO_H
 #define maxCard 10

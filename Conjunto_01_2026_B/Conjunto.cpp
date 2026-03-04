@@ -1,3 +1,6 @@
+//Practica Conjunto
+// Isaac Avila Saenz 238925
+// Héctor Alejandro Hernández Villanueva 248895
 #include "Conjunto.h"
 #include <iostream>
 
