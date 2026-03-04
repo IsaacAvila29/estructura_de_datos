@@ -7,13 +7,13 @@
 using namespace std;
 
 //******** Matriz.cpp **************
-inline Matriz::Matriz (int col, int fil )
+ Matriz::Matriz (int col, int fil )
 {
     columna=col;
     fila=fil;
     llenarMatriz();
 }
-inline void Matriz::llenarMatriz ( )
+ void Matriz::llenarMatriz ( )
 {
     //se desarrolla por el equipo
     // usando las funciones para generar números
@@ -26,7 +26,7 @@ inline void Matriz::llenarMatriz ( )
     }
 }
 
-inline bool Matriz::SumarMatriz( Matriz M2, Matriz & Result)
+ bool Matriz::SumarMatriz(Matriz M2, Matriz& Result)
 {
     if(fila!=M2.fila || columna!=M2.columna)
     {
@@ -34,15 +34,12 @@ inline bool Matriz::SumarMatriz( Matriz M2, Matriz & Result)
     }
     for(int i=0;i<fila;i++){
         for(int j=0;j<columna;j++){
-            Result.matriz[i][j]= this->matriz[i][j] + M2.matriz[i][j];
+            Result.matriz[i][j]=matriz[i][j] + M2.matriz[i][j];
         }
     }
-    Result.fila = fila;
-    Result.columna = columna;
     return true;
 }
-
-inline bool Matriz::RestarMatriz(Matriz M2, Matriz& Result) {
+ bool Matriz::RestarMatriz(Matriz M2, Matriz& Result) {
     if(fila!=M2.fila || columna!=M2.columna)
     {
         return false;
@@ -57,7 +54,7 @@ inline bool Matriz::RestarMatriz(Matriz M2, Matriz& Result) {
     return true;
 }
 
-inline bool Matriz::Multiplicar(Matriz M2, Matriz& Result) {
+ bool Matriz::Multiplicar(Matriz M2, Matriz& Result) {
     if(columna != M2.fila) {
         return false; // dimensiones incompatibles
     }
