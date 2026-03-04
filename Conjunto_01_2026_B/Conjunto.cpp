@@ -9,6 +9,9 @@ Conjunto::Conjunto()
     card = 0;
 }
 
+//Puede ponerse las funciones inline
+//Pero en este caso no se pusieron porque el compilador de MacOs no lo soporta.
+//De todas formas, el programa funciona correctamente sin ser inline, segun unas pruebas que se hicieron.
 bool Conjunto::Member(typeinfo elDato) const
 {
     for(int i=0; i<card; i++)
