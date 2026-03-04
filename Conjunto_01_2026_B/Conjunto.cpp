@@ -43,8 +43,17 @@ void Conjunto::Copy(Conjunto& otro)
         elementos[i] = otro.elementos[i];
 }
 
+bool Conjunto::Equal(Conjunto otro)
+{
+    if(card != otro.card) return false;
+    for(int i=0; i<card; i++){
+        if(!otro.Member(elementos[i])) return false;
+    }
+    return true;
+}
 
-inline bool Conjunto::Print(){
+
+bool Conjunto::Print(){
     if(!card){
         std::cout << "{ }" << std::endl;
         return false;
