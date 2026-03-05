@@ -30,9 +30,31 @@ unsigned int menu(){
 
 void operaciones(Conjunto &C1, Conjunto &C2, Conjunto &Result);
 
+void llenarConjunto(Conjunto &C, const std::string &nombre){
+    typeinfo dato;
+    char continuar;
+    std::cout << "\n--- Rellenando " << nombre << " (max " << maxCard << " elementos) ---\n";
+    do {
+        std::cout << "Ingrese un elemento: ";
+        std::cin >> dato;
+        if(C.AddElem(dato))
+            std::cout << dato << " agregado. ";
+        else
+            std::cout << "No se pudo agregar (duplicado o lleno). ";
+        std::cout << nombre << ": "; C.Print();
+        std::cout << "Agregar otro elemento? (s/n): ";
+        std::cin >> continuar;
+    } while(continuar == 's' || continuar == 'S');
+}
+
 int main(){
     Conjunto C1, C2, Result;
     std::cout << "Programa Conjuntos\n";
+    llenarConjunto(C1, "C1");
+    llenarConjunto(C2, "C2");
+    std::cout << "\n--- Conjuntos listos ---\n";
+    std::cout << "C1: "; C1.Print();
+    std::cout << "C2: "; C2.Print();
     operaciones(C1, C2, Result);
     return 0;
 }
