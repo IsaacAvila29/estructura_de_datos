@@ -1,0 +1,91 @@
+//Practica Conjunto
+// Isaac Avila Saenz 238925
+// Héctor Alejandro Hernández Villanueva 248895
+#include "Conjunto.h"
+#include <iostream>
+
+Conjunto::Conjunto() 
+{
+    card = 0;
+}
+
+//Puede ponerse las funciones inline
+//Pero en este caso no se pusieron porque el compilador de MacOs no lo soporta.
+//De todas formas, el programa funciona correctamente sin ser inline, segun unas pruebas que se hicieron.
+bool Conjunto::Member(typeinfo elDato) const
+{
+    for(int i=0; i<card; i++)
+        if(elementos[i] == elDato) {return true;}
+    
+    return false;
+}
+bool Conjunto::AddElem(typeinfo elDato)
+{
+    if(card == maxCard || Member(elDato)) {return false;}
+    
+    elementos[card++] = elDato;
+    return true;
+}
+bool Conjunto::RmvElem(typeinfo elDato)
+{
+    for(int i=0; i<card; i++)
+        if(elementos[i] == elDato) {
+            elementos[i] = elementos[--card];
+            return true;
+        }
+
+
+    return false;
+
+}
+
+void Conjunto::Copy(Conjunto& otro)
+{
+    card = otro.card;
+    for(int i=0; i<card; i++)
+        elementos[i] = otro.elementos[i];
+}
+
+bool Conjunto::Equal(Conjunto otro)
+{
+    if(card != otro.card) return false;
+    for(int i=0; i<card; i++){
+        if(!otro.Member(elementos[i])) return false;
+    }
+    return true;
+}
+
+
+bool Conjunto::Print(){
+    if(!card){
+        std::cout << "{ }" << std::endl;
+        return false;
+    }
+    std::cout << "{ ";
+    for(int i=0; i<card-1; i++){
+        std::cout << elementos[i] << ", ";
+    }
+    std::cout << elementos[card-1] << " }" << std::endl;
+    return true;
+}
+
+void Conjunto::Intersect(const Conjunto Conj2, Conjunto& Result)
+{
+    Result.card = 0;
+    for (int i=0; i < card; i++)
+        if(Conj2.Member(elementos[i]))
+            Result.AddElem(elementos[i]);
+}
+
+bool Conjunto::Union(Conjunto Conj2, Conjunto& Result)
+{
+    Result.Copy(*this);
+    for (int i=0; i < Conj2.card; i++)
+        if(!Member(Conj2.elementos[i]))
+            Result.AddElem(Conj2.elementos[i]);
+    
+    return true;
+}
+
+Conjunto::~Conjunto() {}
+
