@@ -1,3 +1,6 @@
+//Practica Matrices
+// Isaac Avila Saenz 238925
+// Héctor Alejandro Hernández Villanueva 248895
 #ifndef MATRIZ_H
 #define MATRIZ_H
 
@@ -10,12 +13,12 @@ typedef int tipodato;
 class Matriz
 {
      public:
-
-        Matriz (int col, int fil );  //en clase
+ 
+  Matriz (int fil, int col );  //filas, columnas
         void llenarMatriz ( ); //en clase
-        bool SumarMatriz (Matriz, Matriz&);
-    	bool RestarMatriz (Matriz, Matriz&);
-	    bool Multiplicar(Matriz, Matriz&);
+        bool SumarMatriz (const Matriz&, Matriz&) const;
+    	bool RestarMatriz (const Matriz&, Matriz&) const;
+       bool Multiplicar(const Matriz&, Matriz&) const;
 	    void Imprimir( ); //en clase
 
      private:
