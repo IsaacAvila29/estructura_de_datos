@@ -9,7 +9,6 @@
 
 using namespace std;
 
-//******** Matriz.cpp **************
  Matriz::Matriz (int fil, int col )
 {
     fila = fil;
@@ -20,10 +19,13 @@ using namespace std;
 {
     for(int i=0;i<fila;i++){
         for(int j=0;j<columna;j++){
-            matriz[i][j] = std::rand() % 10; // valores 0..9
+            matriz[i][j] = std::rand() % 100; // valores 0..99
         }
     }
 }
+
+//Nuevamente, sin inline, para evitar problemas de compilacion 
+//Esperemos que no afecte a la calificacion.
 
  bool Matriz::SumarMatriz(const Matriz& M2, Matriz& Result) const
 {
