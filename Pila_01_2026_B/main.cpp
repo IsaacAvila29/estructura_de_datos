@@ -49,33 +49,34 @@ void pushDato(Pila& pila)
 {
 	tipodato dato = leerEntero("Dato a apilar: ");
 	if (pila.Push(dato))
-		cout << "Dato apilado correctamente.\n";
+		cout << "✓ Dato " << dato << " apilado correctamente.\n";
 	else
-		cout << "No se pudo apilar: la pila esta llena.\n";
+		cout << "✗ ERROR: No se pudo apilar - La pila esta LLENA (maximo " << MAX << " elementos).\n";
 }
 
 void popDato(Pila& pila)
 {
 	tipodato dato;
 	if (pila.Pop(dato))
-		cout << "Dato desapilado: " << dato << "\n";
+		cout << "✓ Dato desapilado: " << dato << "\n";
 	else
-		cout << "No se pudo desapilar: la pila esta vacia.\n";
+		cout << "✗ ERROR: No se pudo desapilar - La pila esta VACIA.\n";
 }
 
 void verTope(Pila& pila)
 {
 	tipodato dato;
 	if (pila.Vertope(dato))
-		cout << "Dato en el tope: " << dato << "\n";
+		cout << "✓ Dato en el tope: " << dato << "\n";
 	else
-		cout << "La pila esta vacia.\n";
+		cout << "✗ ERROR: No se puede ver el tope - La pila esta VACIA.\n";
 }
 
 void mostrarEstado(Pila& pila)
 {
-	cout << "Empty(): " << (pila.Empty() ? "true" : "false") << "\n";
-	cout << "Full():  " << (pila.Full() ? "true" : "false") << "\n";
+	cout << "\n===== ESTADO DE LA PILA =====\n";
+	cout << "¿Vacia?: " << (pila.Empty() ? "SI (true)" : "NO (false)") << "\n";
+	cout << "¿Llena?:  " << (pila.Full() ? "SI (true)" : "NO (false)") << "\n\n";
 }
 
 void mostrarContenido(Pila& pila)
@@ -102,6 +103,27 @@ void mostrarContenido(Pila& pila)
 		pila.Push(dato);
 }
 
+void inicializarPila(Pila& pila)
+{
+	int cantidad = leerEntero("Cuantos datos deseas cargar?: ");
+	if (cantidad <= 0)
+	{
+		cout << "Cantidad invalida.\n";
+		return;
+	}
+
+	for (int i = 0; i < cantidad; ++i)
+	{
+		tipodato dato = leerEntero("Dato: ");
+		if (!pila.Push(dato))
+		{
+			cout << "La pila se lleno. No se pueden agregar mas datos.\n";
+			break;
+		}
+	}
+	cout << "Pila inicializada con datos.\n";
+}
+
 void cargarVarios(Pila& pila)
 {
 	int cantidad = leerEntero("Cuantos datos deseas intentar apilar?: ");
@@ -126,6 +148,8 @@ int main()
 {
 	Pila pila;
 	int opcion;
+
+	inicializarPila(pila);
 
 	do
 	{
