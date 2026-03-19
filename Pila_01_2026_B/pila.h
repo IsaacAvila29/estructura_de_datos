@@ -1,3 +1,6 @@
+// Practica Pila
+// Isaac Avila Saenz 238925
+// Héctor Alejandro Hernández Villanueva 248895
 #ifndef PILA_H
 #define PILA_H
 #define MAX 5
