@@ -76,46 +76,30 @@ Nodo* LCircular::Buscar(tipodato elDato)
 
 // -----------------------------------------------------------------------
 
-bool LCircular::InsertarDespues(tipodato referencia, tipodato elDato)
+bool LCircular::InsertarDespues(tipodato dato_buscado, tipodato nuevoDato)
 {
-    Nodo* nodoRef = Buscar(referencia);
-    if (!nodoRef) return false; // referencia no encontrada
-
-    Nodo* nuevo = new Nodo(elDato, nodoRef->siguiente); 
-    if (!nuevo) return false;
-
-    nodoRef->siguiente = nuevo;
-    if (nodoRef == final) // si se inserto despues del ultimo, el nuevo es el ultimo
-        final = nuevo;
+    Nodo* aux = Buscar(dato_buscado), *nuevo = NULL;
+    if (!aux) return false; // no existe el dato buscado
+    if (!(nuevo = new Nodo (nuevoDato, aux -> siguiente))) return false; // No hay memoria    
+    aux -> siguiente = nuevo;
     return true;
+   
 }
 
 // -----------------------------------------------------------------------
 
 bool LCircular::Borrar(tipodato elDato)
 {
-    if (Empty()) return false;
-
-    Nodo* actual   = final->siguiente; // primer nodo
-    Nodo* anterior = final;
-
-    do {
-        if (actual->dato == elDato) {
-            if (actual == final && actual->siguiente == actual) { // unico nodo
-                final = NULL;
-            } else {
-                anterior->siguiente = actual->siguiente;
-                if (actual == final) // era el ultimo: retroceder el puntero final
-                    final = anterior;
-            }
-            delete actual;
-            return true;
-        }
-        anterior = actual;
-        actual = actual->siguiente;
-    } while (actual != final->siguiente);
-
-    return false; // no se encontro el dato
+    Nodo *aux = Buscar(elDato), *anterior = NULL;
+    if(!aux) return false;
+    anterior = final -> siguiente;
+    while (anterior -> siguiente != aux)
+    {
+        anterior = anterior -> siguiente;
+    }
+    anterior -> siguiente = aux -> siguiente;
+    delete aux;
+    return true;
 }
 
 // -----------------------------------------------------------------------
